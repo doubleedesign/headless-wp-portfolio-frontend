@@ -1,34 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Header from './components/Header/Header';
+import { Route, Routes } from 'react-router-dom';
+import { MenuItem, PageItem } from './types';
+import Page from './components/Page/Page';
 
 function App() {
-  const [count, setCount] = useState(0)
+	const baseURL = 'http://double-e-design.local'; // TODO: local/prod envs
+	const api = `${baseURL}/wp-json/wp/v2`;
+	const [menu, setMenu] = useState<MenuItem[]>([]);
+	const [pages, setPages] = useState<PageItem[]>();
+	const [items, setItems] = useState();
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+	async function fetchMenu() {
+		return axios.get(`${api}/menu`);
+	}
+
+	async function fetchPages() {
+		return axios.get(`${api}/pages`);
+	}
+
+	async function fetchPortfolio() {
+		return axios.get(`${api}/items`);
+	}
+
+	useEffect(() => {
+		fetchMenu().then(response => setMenu(response.data.map((item: any) => {
+			return {
+				id: item.ID,
+				title: item.title,
+				route: item.url.replace(baseURL, '')
+			};
+		})));
+
+		fetchPages().then(response => setPages(response.data.map((item: any) => {
+			return {
+				id: item.id,
+				title: item.title.rendered,
+				route: item.link.replace(baseURL, ''),
+				content: item.content
+			};
+		})));
+
+		//fetchPortfolio().then(response => setItems(response.data));
+	}, []);
+
+	useEffect(() => {
+		//console.log(pages);
+	}, [pages]);
+
+	return (
+		<>
+			<Header menuItems={menu} />
+			<Routes>
+				{pages && menu && menu.map((item) => {
+					const page = pages.find((page) => page.route === item.route);
+
+					return page && <Route key={page.id} path={page.route} element={<Page data={page} />} />;
+				})}
+			</Routes>
+		</>
+	);
 }
 
-export default App
+export default App;
