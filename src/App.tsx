@@ -36,7 +36,7 @@ function App() {
 		const response = await axios.get(`${api}/pages`);
 
 		setPages(response.data.map((item: any) => {
-			console.log(item);
+			//console.log(item);
 			return {
 				id: item.id,
 				title: item.title.rendered,

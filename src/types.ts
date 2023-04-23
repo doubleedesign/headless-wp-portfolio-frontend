@@ -15,5 +15,5 @@ export type Item = {
 export type MenuItem = Item;
 
 export type PageItem = Item & {
-	content: string;
+	content: any;
 }

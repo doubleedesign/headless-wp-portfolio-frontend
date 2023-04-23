@@ -27,7 +27,7 @@ const Header: FC<HeaderProps> = (props: HeaderProps) => {
 						{props.menuItems && props.menuItems.map((item) => {
 							return (
 								<li key={item.id}>
-									<a href={`#${item.route}`}>{item.title}</a>
+									<a href={item.route.replace('/',  '#')}>{item.title}</a>
 								</li>
 							);
 						})}

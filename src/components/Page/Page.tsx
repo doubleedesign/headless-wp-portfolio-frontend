@@ -1,17 +1,25 @@
 import React, { FC } from 'react';
 import { PageItem } from '../../types';
+import parse from 'html-react-parser';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 interface PageProps {
 	data: PageItem;
 }
 
 const Page: FC<PageProps> = ({ data }) => {
-	//console.log(data);
 
 	return (
-		<div>
-			<h1>{data.title}</h1>
-		</div>
+		<Container as="section">
+			<Row>
+				<Col>
+					<h1>{data.title}</h1>
+					{parse(data?.content?.rendered)}
+				</Col>
+			</Row>
+		</Container>
 	);
 };
 
