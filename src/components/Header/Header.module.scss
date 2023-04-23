@@ -1,0 +1,31 @@
+@import '../../common.style';
+
+.site-header {
+	padding-top: $grid-gutter-width;
+	padding-bottom: $grid-gutter-width;
+
+	.logo {
+		max-width: 190px;
+	}
+
+	nav {
+		flex-grow: 1;
+
+		ul {
+
+			@include media-breakpoint-up(md) {
+				display: flex;
+				justify-content: flex-end;
+			}
+
+			li {
+				display: block;
+
+				a {
+					display: block;
+				}
+			}
+		}
+	}
+
+}

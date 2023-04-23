@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { SiteSettings, MenuItem, PageItem } from './types';
+import './global.style.scss';
+import './App.style.scss';
 import Header from './components/Header/Header';
-import { MenuItem, PageItem } from './types';
 import Page from './components/Page/Page';
 
 function App() {

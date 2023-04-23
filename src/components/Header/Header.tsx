@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
-import { HeaderWrapper, HeaderMenu, HeaderLogo } from './Header.styled';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { MenuItem } from '../../types';
-import { NavLink } from 'react-router-dom';
-import { FlexRow } from '../common.styled';
+import styles from './Header.module.scss';
 
 interface HeaderProps {
 	logo?: {
@@ -16,24 +17,24 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = (props: HeaderProps) => {
 
 	return (
-		<HeaderWrapper>
-			<FlexRow>
-				<HeaderLogo>
-					{props.logo && <img src={props.logo.url} alt={props.logo.alt}/> }
-				</HeaderLogo>
-				<HeaderMenu>
+		<Container as="header" className={styles.siteHeader}>
+			<Row>
+				<Col xs={4} lg={3}>
+					{props.logo && <img src={props.logo.url} alt={props.logo.alt} className={styles.logo} /> }
+				</Col>
+				<Col as="nav" xs={12} sm={'auto'}>
 					<ul>
 						{props.menuItems && props.menuItems.map((item) => {
 							return (
 								<li key={item.id}>
-									<NavLink to={item.route}>{item.title}</NavLink>
+									<a href={`#${item.route}`}>{item.title}</a>
 								</li>
 							);
 						})}
 					</ul>
-				</HeaderMenu>
-			</FlexRow>
-		</HeaderWrapper>
+				</Col>
+			</Row>
+		</Container>
 	);
 };
 

@@ -1,3 +1,6 @@
+@import './common.style';
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;600;800&display=swap');
+
 :root {
 	font-family: "Inter Tight", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
@@ -11,8 +14,6 @@
 
 body {
 	margin: 0;
-	display: flex;
-	place-items: center;
 	width: 100%;
 	min-width: 100vh;
 	min-height: 100vh;
@@ -20,4 +21,8 @@ body {
 
 #root {
 	width: 100%;
+}
+
+* {
+	box-sizing: border-box;
 }
