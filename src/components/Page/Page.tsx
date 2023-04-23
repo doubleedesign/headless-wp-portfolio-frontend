@@ -7,7 +7,8 @@ interface PageProps {
 }
 
 const Page: FC<PageProps> = ({ data }) => {
-	console.log(data);
+	//console.log(data);
+
 	return (
 		<PageWrapper>
 			<h1>{data.title}</h1>

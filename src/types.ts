@@ -1,3 +1,11 @@
+export type SiteSettings = {
+	logo: {
+		url: string;
+		alt: string;
+	};
+	social_links: any[]
+}
+
 export type Item = {
 	id: number;
 	title: string;
