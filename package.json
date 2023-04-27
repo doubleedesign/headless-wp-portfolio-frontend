@@ -9,6 +9,9 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@fortawesome/free-solid-svg-icons": "^6.4.0",
+		"@fortawesome/pro-duotone-svg-icons": "^6.4.0",
+		"@fortawesome/react-fontawesome": "^0.2.0",
 		"axios": "^1.3.4",
 		"bootstrap": "^5.2.3",
 		"html-react-parser": "^3.0.16",
@@ -17,6 +20,7 @@
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
+		"@doubleedesign/hover.scss": "https://github.com/doubleedesign/Hover.scss#1.0.2",
 		"@doubleedesign/styled-media-queries": "https://github.com/doubleedesign/styled-media-queries",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^14.0.0",

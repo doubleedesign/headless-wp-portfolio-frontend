@@ -3,7 +3,9 @@ export type SiteSettings = {
 		url: string;
 		alt: string;
 	};
-	social_links: any[]
+	social_links: any[];
+	sitename: string;
+	tagline: string;
 }
 
 export type Item = {

@@ -1,3 +1,14 @@
+// scss-docs-start theme-color-variables
+$primary:       #652EC7 !default;
+$secondary:     #3CB9FC !default;
+$success:       #01FFC3 !default;
+$info:          $secondary !default;
+$warning:       #FEC763 !default;
+$danger:        #DE38C8 !default;
+$light:         #f8f9fa !default;
+$dark:          #120052 !default;
+// scss-docs-end theme-color-variables
+
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/maps';

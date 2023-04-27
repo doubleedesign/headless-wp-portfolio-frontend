@@ -15,7 +15,6 @@ const Page: FC<PageProps> = ({ data }) => {
 		<Container as="section">
 			<Row>
 				<Col>
-					<h1>{data.title}</h1>
 					{parse(data?.content?.rendered)}
 				</Col>
 			</Row>

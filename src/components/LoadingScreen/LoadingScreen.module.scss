@@ -1,0 +1,195 @@
+@import '../../common.style';
+
+.LoadingScreen {
+	background: map-get($theme-colors, 'primary');
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.2s ease;
+
+	&[data-loaded="true"] {
+		opacity: 0;
+		z-index: -100;
+	}
+}
+
+@keyframes :global(plane1) {
+	0% {
+		transform: translateX(-300%) translateY(150%) rotate(-25deg);
+		opacity: 0;
+	}
+
+	25%, 75% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateX(360%) translateY(-160%) rotate(-55deg);
+		opacity: 0;
+	}
+}
+
+@keyframes :global(plane2) {
+	0% {
+		transform: translateX(350%) translateY(150%) rotate(200deg);
+		opacity: 0;
+	}
+
+	25%, 75% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateX(-300%) translateY(-200%) rotate(225deg);
+		opacity: 0;
+	}
+}
+
+:global .fa-plane {
+	width: 10rem;
+	height: 10rem !important;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
+
+	&:first-of-type {
+		animation-name: plane1;
+		animation-delay: 3s;
+	}
+
+	&:nth-of-type(2) {
+		animation-name: plane2;
+		animation-delay: 5s;
+	}
+}
+
+@keyframes :global(rocket1) {
+	0% {
+		transform: translateY(0) rotate(-45deg);
+	}
+
+	12% {
+		transform: translateY(-100px) rotate(-45deg);
+	}
+
+	24% {
+		transform: translateY(0) rotate(-45deg);
+	}
+
+	36% {
+		transform: translateY(-100px) rotate(-45deg);
+	}
+
+	48% {
+		transform: translateY(0) rotate(-45deg);
+	}
+
+	60% {
+		transform: translateY(-100px) rotate(-45deg);
+	}
+
+	100% {
+		transform: translateY(-700px) rotate(-45deg);
+		opacity: 1;
+	}
+}
+
+@keyframes :global(rocket2) {
+	0% {
+		opacity: 0;
+		transform: rotate(-45deg);
+	}
+
+	8% {
+		opacity: 0;
+	}
+
+	12% {
+		transform: translateY(-100px) rotate(-45deg);
+		opacity: 1;
+	}
+
+	16.25% {
+		opacity: 0;
+	}
+
+	24% {
+		transform: translateY(0) rotate(-45deg);
+		opacity: 0;
+	}
+
+	36% {
+		transform: translateY(-100px) rotate(-45deg);
+		opacity: 1;
+	}
+
+	48% {
+		transform: translateY(0) rotate(-45deg);
+		opacity: 0;
+	}
+
+	60% {
+		transform: translateY(-100px) rotate(-45deg);
+		opacity: 1;
+	}
+
+	100% {
+		transform:  translateY(-700px) rotate(-45deg);
+		opacity: 1;
+	}
+}
+
+:global .fa-rocket,
+:global .fa-rocket-launch {
+	width: 12rem;
+	height: 12rem !important;
+	margin-top: -200px;
+	position: relative;
+	animation-duration: 4s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
+	animation-delay: 0s;
+}
+
+:global .fa-rocket {
+	animation-name: rocket1;
+}
+
+:global .fa-rocket-launch {
+	top: 0.5rem;
+	animation-name: rocket2;
+}
+
+@keyframes fadeAcross {
+	95% {
+		background-position: center right 300%;
+	}
+	100% {
+		background-image: linear-gradient(white 0%, white 100%);
+	}
+}
+
+.text {
+	padding-top: $grid-gutter-width;
+	font-size: map-get($font-sizes, 4);
+	animation-name: fadeAcross;
+	animation-duration: 2s;
+	animation-delay: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	background-image: linear-gradient(-225deg, map-get($theme-colors, 'primary') 0%, white 100%);
+	background-size: 200% auto;
+	background-position: center left;
+	color: #fff;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}

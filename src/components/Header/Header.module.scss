@@ -1,4 +1,5 @@
 @import '../../common.style';
+@import 'node_modules/@doubleedesign/hover.scss/hover';
 
 .site-header {
 	padding-top: $grid-gutter-width;
@@ -11,18 +12,67 @@
 	nav {
 		flex-grow: 1;
 
+		@include media-breakpoint-up(md) {
+		    display: flex;
+			justify-content: flex-end;
+		}
+
 		ul {
+			background: map-get($theme-colors, 'primary');
+			padding: 0;
+			position: relative;
 
 			@include media-breakpoint-up(md) {
-				display: flex;
+				display: inline-flex;
 				justify-content: flex-end;
+				padding-left: $grid-gutter-width;
+			}
+
+			&:before {
+
+				@include media-breakpoint-up(md) {
+					content: '';
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 0 40px 40px 0;
+					border-color: transparent map-get($theme-colors, 'primary') transparent transparent;
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					left: -40px;
+				}
+			}
+
+			&:after {
+
+				@include media-breakpoint-up(md) {
+				    content: '';
+					background: map-get($theme-colors, 'primary');
+					position: absolute;
+					top: 0;
+					bottom: 0;
+					right: -100%;
+					width: 100%;
+				}
 			}
 
 			li {
 				display: block;
 
 				a {
+					font-weight: 300;
 					display: block;
+					background-color: transparent !important;
+					color: color-contrast(map-get($theme-colors, 'primary'));
+					padding: calc($grid-gutter-width/3);
+					@include shutter-out-horizontal(darken(map-get($theme-colors, 'primary'), 15%));
+					text-decoration-color: transparent;
+					transition: text-decoration-color 0.3s ease;
+
+					&:focus {
+						text-decoration-color: currentColor;
+					}
 				}
 			}
 		}
