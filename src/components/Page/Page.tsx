@@ -4,6 +4,7 @@ import parse from 'html-react-parser';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import styles from './Page.module.scss';
 
 interface PageProps {
 	data: PageItem;
@@ -12,13 +13,15 @@ interface PageProps {
 const Page: FC<PageProps> = ({ data }) => {
 
 	return (
-		<Container as="section">
-			<Row>
-				<Col>
-					{parse(data?.content?.rendered)}
-				</Col>
-			</Row>
-		</Container>
+		<section className={`${styles.Page} bg-${data.colour_theme}`}>
+			<Container>
+				<Row>
+					<Col>
+						{parse(data?.content)}
+					</Col>
+				</Row>
+			</Container>
+		</section>
 	);
 };
 

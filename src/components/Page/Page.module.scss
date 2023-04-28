@@ -1,0 +1,14 @@
+@import '../../common.style';
+
+.Page {
+	padding-top: $grid-gutter-width;
+	padding-bottom: $grid-gutter-width;
+
+	p:first-child {
+		margin-top: 0;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}

@@ -18,4 +18,5 @@ export type MenuItem = Item;
 
 export type PageItem = Item & {
 	content: any;
+	colour_theme: string
 }

@@ -23,7 +23,7 @@ const Header: FC = () => {
 								{menu && menu.map((item: MenuItem) => {
 									return (
 										<li key={item.id}>
-											<a href={item.route.replace('/',  '#')}>{item.title}</a>
+											<a href={`#${item.route}`}>{item.title}</a>
 										</li>
 									);
 								})}

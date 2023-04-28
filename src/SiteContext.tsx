@@ -31,7 +31,8 @@ const SiteContextProvider: React.FC<PropsWithChildren> = function({ children }) 
 					return {
 						id: item.ID,
 						title: item.title,
-						route: item.url.replace(api.replace('/wp-json/wp/v2', ''), '')
+						// Get the path without the API site domain, API path, and leading and trailing slashes
+						route: item.url.replace(api.replace('/wp-json/wp/v2', ''), '').replace(/^\/|\/$/g, '')
 					};
 				}));
 			})

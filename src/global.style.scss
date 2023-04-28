@@ -2,3 +2,14 @@
 @import 'bootstrap/scss/containers';
 @import 'bootstrap/scss/grid';
 
+@each $color, $value in $theme-colors {
+	.bg-#{$color} {
+		background: $value;
+		color: color-contrast($value);
+	}
+}
+
+p.lead {
+	font-weight: 600;
+	font-size: 1.25em;
+}
