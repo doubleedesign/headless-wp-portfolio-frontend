@@ -22,6 +22,14 @@ const SiteContextProvider: React.FC<PropsWithChildren> = function({ children }) 
 	const [menu, setMenu] = useState<MenuItem[]>([]);
 	const [loaded, setLoaded] = useState(false);
 
+	async function imageLoaded(url: string) {
+		if(settings?.logo) {
+			const blob = await fetch(settings?.logo.url).then((r) => r.blob());
+			return blob.size > 0 ? true : false;
+		}
+		return false;
+	}
+
 
 	useEffect(() => {
 
@@ -44,12 +52,15 @@ const SiteContextProvider: React.FC<PropsWithChildren> = function({ children }) 
 
 	useEffect(() => {
 		if(settings && menu) {
-			setLoaded(true);
-			if(settings.sitename === 'Double-E Design') {
-				document.title = `${settings.sitename} - ${settings.tagline}`;
+			if(settings?.sitename === 'Double-E Design') {
+				document.title = `${settings.sitename} | ${settings.tagline}`;
+				if(settings.logo?.url) {
+					imageLoaded(settings?.logo.url).then(status => setLoaded(status));
+				}
 			}
 			else {
-				document.title = 'Leesa Ward - Wearer of Many Hats';
+				document.title = 'Leesa Ward | Developer, Designer | Wearer of Many Hats';
+				setLoaded(true);
 			}
 		}
 	}, [settings, menu]);
