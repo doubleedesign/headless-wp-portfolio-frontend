@@ -2,6 +2,7 @@ import React, { createContext, PropsWithChildren, useEffect, useState } from 're
 import axios from 'axios';
 import { MenuItem, SiteSettings } from './types';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
+import { imageLoaded } from './utils';
 
 interface MyAppContext {
 	domainKey: string;
@@ -21,15 +22,6 @@ const SiteContextProvider: React.FC<PropsWithChildren> = function({ children }) 
 	const [settings, setSettings] = useState<SiteSettings>();
 	const [menu, setMenu] = useState<MenuItem[]>([]);
 	const [loaded, setLoaded] = useState(false);
-
-	async function imageLoaded(url: string) {
-		if(settings?.logo) {
-			const blob = await fetch(settings?.logo.url).then((r) => r.blob());
-			return blob.size > 0 ? true : false;
-		}
-		return false;
-	}
-
 
 	useEffect(() => {
 
